@@ -1,0 +1,51 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root {
+  color-scheme: light;
+  --brand-start: #0f766e;
+  --brand-end: #036b82;
+  --brand-shadow: rgba(15, 118, 110, 0.2);
+}
+.dark {
+  color-scheme: dark;
+  --brand-start: #0f766e;
+  --brand-end: #075985;
+  --brand-shadow: rgba(13, 148, 136, 0.2);
+}
+@layer base {
+  body {
+    font-family: 'Inter Variable', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: linear-gradient(118deg, rgba(20, 184, 166, 0.055), transparent 42%), linear-gradient(300deg, rgba(245, 158, 11, 0.035), transparent 38%);
+    background-attachment: fixed;
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  }
+  .dark body { background-image: linear-gradient(118deg, rgba(20, 184, 166, 0.09), transparent 44%), linear-gradient(300deg, rgba(14, 116, 144, 0.07), transparent 40%); }
+  :focus-visible { @apply outline-none ring-2 ring-teal-600 ring-offset-2 ring-offset-white dark:ring-offset-slate-900; }
+}
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900;
+    background-image: linear-gradient(145deg, rgba(20, 184, 166, 0.035), transparent 48%);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 18px 36px -30px rgba(15, 118, 110, 0.24);
+  }
+  .dark .card {
+    background-image: linear-gradient(145deg, rgba(20, 184, 166, 0.075), transparent 52%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 20px 40px -32px rgba(6, 182, 212, 0.22);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-50;
+    background-image: linear-gradient(112deg, var(--brand-start), var(--brand-end));
+    background-size: 150% 100%;
+    background-position: 0% 50%;
+    box-shadow: 0 5px 14px -7px var(--brand-shadow);
+    transition: background-position 180ms ease, box-shadow 180ms ease, transform 120ms ease;
+  }
+  .btn:hover:not(:disabled) { background-position: 100% 50%; box-shadow: 0 8px 18px -8px var(--brand-shadow); }
+  .btn:active:not(:disabled) { transform: translateY(1px); }
+  .input { @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 placeholder:text-slate-400 focus:border-teal-600 dark:border-slate-700 dark:bg-slate-900; }
+  .input:focus { box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.14); }
+  .dark .input:focus { box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15); }
+  .chip { @apply rounded-lg border border-slate-300 px-3 py-1.5 text-sm transition hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800; }
+  .chip-on { @apply border-teal-700 text-white dark:border-teal-600; background-image: linear-gradient(110deg, #0f766e, #0e7490); box-shadow: 0 4px 12px -7px var(--brand-shadow); }
+}
+@media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

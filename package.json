@@ -1,0 +1,17 @@
+{
+  "name": "lms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-grade LMS with PayPal / Stripe / mock payments, coupons, invoices, reviews and progress tracking",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "test": "npm test --prefix server",
+    "seed": "npm run seed --prefix server"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
